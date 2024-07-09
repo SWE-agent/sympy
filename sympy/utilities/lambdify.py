@@ -1154,6 +1154,8 @@ class _EvaluatorPrinter:
 
         if '\n' in str_expr:
             str_expr = '({})'.format(str_expr)
+        if isinstance(expr, tuple) and len(expr) == 1:
+            str_expr = '({0},)'.format(self._exprrepr(expr[0]))
         funcbody.append('return {}'.format(str_expr))
 
         funclines = [funcsig]
